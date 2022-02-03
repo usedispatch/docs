@@ -52,7 +52,7 @@ const messageCount2 = await mailbox.count();
 ### Transaction API
 
 
-If you'd like to construct `Transaction` objects to interact with the 0xengage protocol,
+If you'd like to construct `Transaction` objects to interact with the Dispatch protocol,
 but submit transactions to the network yourself, you can use the client as follows:
 
 
