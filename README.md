@@ -1,7 +1,7 @@
 Welcome to Dispatch's documentation page.
 
 ### What is Dispatch?
-0xengage is a Solana protocol to allow dapps and wallets to communicate with each other.
+Dispatch is a Solana protocol to allow dapps and wallets to communicate with each other.
 
 ### How does it work?
 You can access Dispatch via `G3mefhJTnrSAtkrGFtztYeAo9nkM1kyNXkqaFkikfAmD` program on `devnet`.
