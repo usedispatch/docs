@@ -4,7 +4,7 @@ Welcome to Dispatch's documentation page.
 Dispatch is a Solana protocol to allow dapps and wallets to communicate with each other.
 
 ### How does it work?
-You can access Dispatch via `BHJ4tRcogS88tUhYotPfYWDjR4q7MGdizdiguY3N54rb` program on `devnet`.
+You can access Dispatch via `BHJ4tRcogS88tUhYotPfYWDjR4q7MGdizdiguY3N54rb` program on `devnet`. The anchor IDL can be downloaded using `anchor idl`, or better yet use our JS/TS client.
 
 More protocol details are coming soon.
 
@@ -50,12 +50,15 @@ npm install @usedispatch/client
 ```typescript
 import { Mailbox } from '@usedispatch/client';
 
-// Initialize mailbox for a receiver and start sending messages.
-const mailbox = new Mailbox(conn, { receiverAddress, payer, });
+// Initialize mailbox for a local wallet and start sending messages
+const mailbox = new Mailbox(conn, senderWallet);
 
-// Send messages
-await mailbox.send("text0");
-await mailbox.send("text1");
+// Send messages to ourself
+await mailbox.send("text0", receiverPublicKey);
+await mailbox.send("text1", receiverPublicKey);
+
+// The receiver can manage their messages with a mailbox
+const mailbox2 = new Mailbox(conn, receiverWallet);
 
 // Fetch messages
 // This returns:
@@ -63,19 +66,18 @@ await mailbox.send("text1");
 //  { sender: 'senders_public_key', data: 'text0' },
 //  { sender: 'senders_public_key', data: 'text1' },
 // ]
-const messages = await mailbox.fetch();
+const messages = await mailbox2.fetch();
 
 // Get number of messages in a mailbox
 // This returns: 2
-const messageCount1 = await mailbox.count();
+const messageCount1 = await mailbox2.count();
 
-// Receiver can close message accounts and retrieve rent.
-const mailbox2 = new Mailbox(conn, { receiver, payer, });
+// Receiver can close message accounts and release rent.
 await mailbox2.pop();
 await mailbox2.pop();
 
 // This returns: 0
-const messageCount2 = await mailbox.count();
+const messageCount2 = await mailbox2.count();
 ```
 
 ### Transaction API
@@ -88,26 +90,22 @@ but submit transactions to the network yourself, you can use the client as follo
 ```typescript
 import { Mailbox } from '@usedispatch/client';
 
-// Initialize mailbox for receiver
-const mailbox = new Mailbox(conn, { receiverAddress, payerAddress, });
+// Initialize mailbox for sender. If you don't have a natural
+// wallet, import and use KeypairWallet and a new web3.Keypair.
+const mailbox = new Mailbox(conn, wallet, {
+  mailboxOwener: senderPublicKey,
+  payer: payerPublicKey,
+});
 
 // Construct transactions to send messages. You may then submit
 // `sendTx0` and `sendTx1` to the network. When submitting note
-// that `payer` must sign the transaction.
-const sendTx0 = await mailbox.makeSendTx("text0");
-const sendTx1 = await mailbox.makeSendTx("text1");
+// that `payer` and `sender` must sign the transaction.
+const sendTx0 = await mailbox.makeSendTx("text0", receiver);
+const sendTx1 = await mailbox.makeSendTx("text1", receiver);
 
-// Fetch messages
-// This returns:
-// [
-//  { sender: 'senders_public_key', data: 'text0' },
-//  { sender: 'senders_public_key', data: 'text1' },
-// ]
-const messages = await mailbox.fetch();
-
-// You can construct transactions to pop messages as follows. Note
-// that receiver must sign the transaction in order for it to
-// succeed.
+// You can construct transactions to pop messages as follows.
+// Note that the mailbox owner must sign the transaction in order
+// for it to succeed.
 const popTx0 = await mailbox.makePopTx();
 const popTx1 = await mailbox.makePopTx();
 ```
