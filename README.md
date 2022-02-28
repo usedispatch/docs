@@ -4,7 +4,7 @@ Welcome to Dispatch's documentation page.
 Dispatch is a Solana protocol to allow dapps and wallets to communicate with each other.
 
 ### How does it work?
-You can access Dispatch via `7hSwrtqHAKjLNsj3KauwcCDxuqC3pbkshZWYs28xWtwU` program on `devnet`.
+You can access Dispatch via `BHJ4tRcogS88tUhYotPfYWDjR4q7MGdizdiguY3N54rb` program on `devnet`.
 
 More protocol details are coming soon.
 
