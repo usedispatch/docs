@@ -4,11 +4,13 @@ Welcome to Dispatch's documentation page.
 Dispatch is a Solana protocol to allow dapps and wallets to communicate with each other.
 
 ### How does it work?
-You can access Dispatch via `BHJ4tRcogS88tUhYotPfYWDjR4q7MGdizdiguY3N54rb` program on `devnet`. The anchor IDL can be downloaded using `anchor idl`, or better yet use our JS/TS client.
+You can access Dispatch via the `BHJ4tRcogS88tUhYotPfYWDjR4q7MGdizdiguY3N54rb` program on `devnet` and `mainnet`. The anchor IDL can be downloaded using `anchor idl`, or better yet use our [client sdk](https://www.npmjs.com/package/@usedispatch/client).
 
-More protocol details are coming soon.
+See our [litepaper](./litepaper.md) for more details on how the protocol works under the hood.
 
-### Client Installation
+See our [developer docs](./developer.md) for details on the client SDK.
+
+### CLI Installation
 
 The `dispatch-cli` is a command line utility to quickly send and receive messages on Solana. 
 
@@ -16,7 +18,7 @@ The `dispatch-cli` is a command line utility to quickly send and receive message
 npm install -g @usedispatch/cli
 ```
 
-The tool picks up the currently configured Solana command line wallet. To verify your Solana wallet set up, run `solana config get` and `solana address` to see which network you're on, and what your account address is.
+The tool picks up the currently configured Solana command line wallet. To verify your Solana wallet set up, run `solana address` to see what your account address is.
 
 ```
 % dispatch-cli
@@ -30,7 +32,7 @@ Commands:
 Options:
   --version  Show version number                                   [boolean]
   --cluster
-          [choices: "mainnet-beta", "devnet", "testnet"] [default: "devnet"]
+          [choices: "mainnet-beta", "devnet", "testnet"] [default: "mainnet-beta"]
   --help     Show help                                             [boolean]
 
 A command is required
