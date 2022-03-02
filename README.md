@@ -93,7 +93,7 @@ import { Mailbox } from '@usedispatch/client';
 // Initialize mailbox for sender. If you don't have a natural
 // wallet, import and use KeypairWallet and a new web3.Keypair.
 const mailbox = new Mailbox(conn, wallet, {
-  mailboxOwener: senderPublicKey,
+  mailboxOwner: senderPublicKey,
   payer: payerPublicKey,
 });
 
