@@ -22,4 +22,4 @@ The receiver may elect to delete messages in FIFO order. When a message is delet
 
 Dispatch Protocol charges a fee for each message that is sent. This is currently 50,000 lamports per message.
 
-There is also a full-featured client library and a minimalistic command line tool to aid in the use of the protocol. Please see https://github.com/usedispatch/docs/blob/main/README.md for more details.
+There is also a full-featured client library and a minimalistic command line tool to aid in the use of the protocol. Please see https://docs.usedispatch.net/ for more details.
