@@ -29,6 +29,7 @@ There are a number of methods that return statistics and messages about the mail
 
 - `count()` returns the number of messages on chain for this mailbox.
 - `fetch()` returns an array of all messages in the mailbox. See [MessageAccount](./message.md) for more details on the message object.
+- `getMessageById(id: number)` returns a single message. You may get this ID from a subsciption event.
 
 ## Sending and deleting messages
 
@@ -45,3 +46,7 @@ Transaction-based
 Imperative
 - `send(data: string, receiverAddress: web3.PublicKey)` sends the message in `data` to `receiverAddress` from `mailboxOwner`. The `wallet` is used to sign and pay for the transaction.
 - `pop()` deletes the oldest message from the mailbox. The `wallet` is used to sign and pay for the transaction.
+
+## Subscriptions
+
+The `Mailbox` object supports a subscription interface via `addMessageListener(callback)`. Keep track of the returned subscription ID for later unsubscription. For each new message sent to this `Mailbox` you will get a callback which will be passed a summary of the message. You can then get full message data using `getMessageById`. To stop subscribing, call `removeMessageListener` with the subscription ID. As of the current writing, this subscription will cause your application to consume enough bandwidth for all messages sent on the protocol even though you will only receive events when sent to this Mailbox.
