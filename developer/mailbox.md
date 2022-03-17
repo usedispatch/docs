@@ -18,6 +18,7 @@ The optional arguments in `opts` are as follows.
 | payer        | web3.PublicKey | The account that will pay transaction fees and rent for any generated transactions. |
 | skipAnchorCluster | boolean | If you are already using anchor in your project and have configured the global anchor provider, you can skip re-intialization by setting this. |
 | cluster      | web3.Cluster   | Which cluster to use (needed to get the right program address). Defaults to `mainnet-beta`. |
+| sendObfuscated | boolean      | If set to true, messages will be obfuscated so that chain explorers do not show the message in plan text. Note that this is not encryption. |
 
 ## Mailbox owner
 
