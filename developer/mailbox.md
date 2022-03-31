@@ -42,11 +42,13 @@ There are several limitations for the imperative methods.
 
 Transaction-based
 - `makeSendTx(data: string, receiverAddress: web3.PublicKey)` creates a transaction to send the message in `data` to `receiverAddress` from `mailboxOwner` and sets the `payer` on the transaction to be `wallet.payer`. Both `payer` and `mailboxOwner` (the sender) must sign the transaction for it to be valid. If they are the same, only one signature is needed.
-- `makePopTx()` creates a transaction to delete the oldest message from the mailbox. It must be signed by both `mailboxOwner` and `payer` to be valid.
+- `makeDeleteTx(messageId: number, receiverAddress?: web3.PublicKey)` creates a transaction to delete the given message from the mailbox. It will throw an error if the message does not exist. If `receiverAddress` is not supplied then `mailboxOwner` is used. The transaction must then be signed by one of the message's `receiver`, `sender`, or `payer` as well as the `payer` configured on this mailbox.
+- `makeClaimIncentiveTx(messageId: number, receiverAddress?: web3.PublicKey)` creates a transaction to claim the incentive attached to a given message. It will throw an error if the message does not exist, but it will create the transaction even if there is no incentive (which will then fail if sent to the network). If `receiverAddress` is not supplied then `mailboxOwner` is used. The transaction must then be signed by the message `receiver` and the `payer` configured on this mailbox.
 
 Imperative
 - `send(data: string, receiverAddress: web3.PublicKey)` sends the message in `data` to `receiverAddress` from `mailboxOwner`. The `wallet` is used to sign and pay for the transaction.
-- `pop()` deletes the oldest message from the mailbox. The `wallet` is used to sign and pay for the transaction.
+- `delete(messageId: number, receiverAddress?: web3.PublicKey)` deletes the message with given `messageId` from the mailbox if it exists and throws an Error otherwise. The `wallet` is used to sign and pay for the transaction. You may provide `receiverAddress` to delete a message this wallet sent / paid for previously and sent to `receiverAddress`.
+- `claimIncentive(messageId: number)` claims the incentive account if it exists and throws an Error if the message account or incentive does not exist. The incentive will be claimed to the ATA of the wallet.
 
 ## Subscriptions
 
