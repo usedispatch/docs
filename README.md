@@ -116,7 +116,7 @@ receiverMailboxAsSender.fetch().then((messages) => {
 If you'd like to construct `Transaction` objects to interact with the Dispatch protocol,
 but submit transactions to the network yourself, you can use the client as follows. See our [developer docs](./developer.md) for more details.
 
-```
+```typescript
 import { Mailbox } from '@usedispatch/client';
 
 // Initialize mailbox for sender. If you don't have a natural
