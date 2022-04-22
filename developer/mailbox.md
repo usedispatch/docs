@@ -26,11 +26,12 @@ Every mailbox has a single owner, which is the `PublicKey` of the receiver/autho
 
 ## Reading mailbox state and messages
 
-There are a number of methods that return statistics and messages about the mailbox.
+There are some core methods that return statistics about and messages from the mailbox.
 
 - `count()` returns the number of messages on chain for this mailbox.
-- `fetch()` returns an array of all messages in the mailbox. See [MessageAccount](./message.md) for more details on the message object.
-- `getMessageById(id: number)` returns a single message. You may get this ID from a subsciption event.
+- `fetchMessages()` returns an array of all messages in the mailbox. See [MessageAccount](./message.md) for more details on the message object.
+- `fetchMessageById(id: number)` returns a single message. You may get this ID from a subsciption event.
+- `fetchSentMessagesTo(receiverAddress: web3.PublicKey)` returns an array of all messages sent by this `mailboxOwner` to the `receiverAddress`.
 
 ## Sending and deleting messages
 
@@ -41,15 +42,15 @@ There are several limitations for the imperative methods.
 1. If `payer` is provided, the `payer` must also match `wallet.publicKey` because we only sign with this wallet.
 
 ### Transaction-based
-- `makeSendTx(data: string, receiverAddress: web3.PublicKey)` creates a transaction to send the message in `data` to `receiverAddress` from `mailboxOwner` and sets the `payer` on the transaction to be `wallet.payer`. Both `payer` and `mailboxOwner` (the sender) must sign the transaction for it to be valid. If they are the same, only one signature is needed.
+- `makeSendTx(data: string, receiverAddress: web3.PublicKey)` creates a transaction to send the message in `data` to `receiverAddress` from `mailboxOwner` and sets the `payer` on the transaction to be `wallet.payer`. Both `payer` and `mailboxOwner` (the sender) must sign the transaction for it to be valid. If they are the same, only one signature is needed. You may want to use `getMessageString` to format the message string correctly when using this method.
 - `makeDeleteTx(messageId: number, receiverAddress?: web3.PublicKey)` creates a transaction to delete the given message from the mailbox. It will throw an error if the message does not exist. If `receiverAddress` is not supplied then `mailboxOwner` is used. The transaction must then be signed by one of the message's `receiver`, `sender`, or `payer` as well as the `payer` configured on this mailbox.
 - `makeClaimIncentiveTx(messageId: number, receiverAddress?: web3.PublicKey)` creates a transaction to claim the incentive attached to a given message. It will throw an error if the message does not exist, but it will create the transaction even if there is no incentive (which will then fail if sent to the network). If `receiverAddress` is not supplied then `mailboxOwner` is used. The transaction must then be signed by the message `receiver` and the `payer` configured on this mailbox.
 
 ### Imperative
-- `send(data: string, receiverAddress: web3.PublicKey)` sends the message in `data` to `receiverAddress` from `mailboxOwner`. The `wallet` is used to sign and pay for the transaction.
-- `delete(messageId: number, receiverAddress?: web3.PublicKey)` deletes the message with given `messageId` from the mailbox if it exists and throws an Error otherwise. The `wallet` is used to sign and pay for the transaction. You may provide `receiverAddress` to delete a message this wallet sent / paid for previously and sent to `receiverAddress`.
-- `claimIncentive(messageId: number)` claims the incentive account if it exists and throws an Error if the message account or incentive does not exist. The incentive will be claimed to the ATA of the wallet.
+- `sendMessage(subj: string, body: string, receiverAddress: web3.PublicKey, opts?: SendOpts, meta?: object)` sends the message in `body` to `receiverAddress` from `mailboxOwner`. The `wallet` is used to sign and pay for the transaction. `subj` gives you the subject of the message. You can use the `opts` to send an incentive. `meta` is an object that will be serialized to include additional information for the use of the application sending the message.
+- `deleteMessage(message: MessageAccount)` deletes the given message (either in this mailbox, or that this mailbox sent or paid for) if it exists and throws an Error otherwise. The `wallet` is used to sign and pay for the transaction.
+- `claimIncentive(message: MessageAccount)` claims the incentive account if it exists and throws an Error if the message account or incentive does not exist. The incentive will be claimed to the ATA of the wallet.
 
 ## Subscriptions
 
-The `Mailbox` object supports a subscription interface via `addMessageListener(callback)`. Keep track of the returned subscription ID for later unsubscription. For each new message sent to this `Mailbox` you will get a callback which will be passed a summary of the message. You can then get full message data using `getMessageById`. To stop subscribing, call `removeMessageListener` with the subscription ID. As of the current writing, this subscription will cause your application to consume enough bandwidth for all messages sent on the protocol even though you will only receive events when sent to this Mailbox.
+The `Mailbox` object supports a subscription interface via `addMessageListener(callback)`. Keep track of the returned subscription ID for later unsubscription. For each new message sent to this `Mailbox` you will get a callback which will be passed a summary of the message. You can then get full message data using `getMessageById`. To stop subscribing, call `removeMessageListener` with the subscription ID. As of the current writing, this subscription will cause your application to consume enough bandwidth for all messages sent on the protocol even though you will only receive events when sent to this Mailbox. You can also subscribe to messages you send from this mailbox using `addSentMessageListener(callback)`.

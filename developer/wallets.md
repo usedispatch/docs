@@ -22,6 +22,6 @@ const wallet = dispatch.KeyPairWallet(web3.Keypair.generate());
 
 const getMessages = async (conn: web3.Connection, mailboxOwner: web3.PublicKey) => {
     const mb = dispatch.Mailbox(conn, wallet, {mailboxOwner});
-    return mb.fetch();
+    return mb.fetchMessages();
 }
 ```
