@@ -46,6 +46,11 @@ A command is required
 npm install @usedispatch/client
 ```
 
+```bash
+npm install @usedispatch/forum
+```
+
+To learn more about using forums, check out our [forums react SDK](./forums_react.md).
 ### Quickstart
 
 #### Messaging Example
