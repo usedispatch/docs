@@ -4,7 +4,7 @@ Welcome to Dispatch's documentation page.
 Dispatch is a Solana protocol to allow dapps and wallets to communicate with each other.
 
 ### How does it work?
-You can access Dispatch via the `BHJ4tRcogS88tUhYotPfYWDjR4q7MGdizdiguY3N54rb` program on `devnet` and `mainnet`. The anchor IDL can be downloaded using `anchor idl`, or better yet use our [client sdk](https://www.npmjs.com/package/@usedispatch/client).
+You can access Dispatch Messaging via the `BHJ4tRcogS88tUhYotPfYWDjR4q7MGdizdiguY3N54rb` program on `devnet` and `mainnet`. You can access Dispatch Postbox via the `Fs5wSa7GYtTqivXGqHyx673v5oPuD5Cb7ij9utsFKdLb` program on `devnet`. The anchor IDL can be downloaded using `anchor idl`, or better yet use our [client sdk](https://www.npmjs.com/package/@usedispatch/client).
 
 See our [litepaper](./litepaper.md) for more details on how the protocol works under the hood.
 
@@ -48,6 +48,8 @@ npm install @usedispatch/client
 
 ### Quickstart
 
+#### Messaging Example
+
 ```typescript
 
 import * as web3 from '@solana/web3.js';
@@ -72,6 +74,8 @@ receiverWallet = new KeyPairWallet(receiver)
 
 senderMailbox = new Mailbox(conn, senderWallet);
 receiverMailbox = new Mailbox(conn, receiverWallet);
+
+// Messaging
   
 // Fund both wallets
 await conn.confirmTransaction(await conn.requestAirdrop(sender.publicKey, 2 * web3.LAMPORTS_PER_SOL));
@@ -111,6 +115,37 @@ receiverMailboxAsSender.fetch().then((messages) => {
 });
 
 ```
+
+
+#### Postbox Example
+
+```typescript
+
+import * as anchor from '@project-serum/anchor';
+import { Postbox, DispatchConnection, Forum, clusterAddresses } from '../usedispatch_client/src';
+
+
+const conn = anchor.getProvider().connection;
+const TREASURY = clusterAddresses.get("devnet").treasuryAddress;
+
+
+const owner = new anchor.Wallet(anchor.web3.Keypair.generate());
+await conn.confirmTransaction(await conn.requestAirdrop(owner.publicKey, 2 * anchor.web3.LAMPORTS_PER_SOL));
+await conn.confirmTransaction(await conn.requestAirdrop(TREASURY, 1 * anchor.web3.LAMPORTS_PER_SOL));
+
+const treasuryBalance = await conn.getBalance(TREASURY);
+
+const postbox = new Postbox(new DispatchConnection(conn, owner), {key: owner.publicKey, str: "Public"});
+const tx0 = await postbox.initialize();
+await conn.confirmTransaction(tx0);
+
+
+const testPost = {subj: "Test", body: "This is a test post"};
+const tx1 = await postbox.createPost(testPost);
+await conn.confirmTransaction(tx1);
+```
+
+
 ### Transaction API
 
 If you'd like to construct `Transaction` objects to interact with the Dispatch protocol,
