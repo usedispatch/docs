@@ -90,6 +90,9 @@ const forumURL = "/forum";
 const topicURL = "/topic";
 ```
 
+Make sure to include the last line above with the CSS file to ensure component styling works. This CSS is customizable, look below for an example. 
+
+
 The DispatchApp router will take the following format.
 ```
     <ConnectionProvider>
@@ -122,6 +125,7 @@ import { TopicView, ForumView } from "@usedispatch/forum";
 const baseURL = "http://localhost:3000"
 const forumURL = "/forum";
 const topicURL = "/topic";
+require('@usedispatch/forum/dist/main.css')
 
 ...
     ...
