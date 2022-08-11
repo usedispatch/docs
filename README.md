@@ -6,7 +6,7 @@ Dispatch is a monetizable conversational protocol for Solana. It supports two ki
 
 
 ## How does it work?
-You can access Dispatch Mailbox Protocol via the `BHJ4tRcogS88tUhYotPfYWDjR4q7MGdizdiguY3N54rb` program on `devnet` and `mainnet`. You can access Dispatch Postbox Mailbox via the `Fs5wSa7GYtTqivXGqHyx673v5oPuD5Cb7ij9utsFKdLb` program on `devnet`. The anchor IDL can be downloaded using `anchor idl`, or better yet use our [client sdk](https://www.npmjs.com/package/@usedispatch/client).
+You can access Dispatch Mailbox Protocol via the `BHJ4tRcogS88tUhYotPfYWDjR4q7MGdizdiguY3N54rb` program on `devnet` and `mainnet`. You can access Dispatch Postbox Protocol via the `Fs5wSa7GYtTqivXGqHyx673v5oPuD5Cb7ij9utsFKdLb` program on `devnet`. The anchor IDL can be downloaded using `anchor idl`, or better yet use our [client sdk](https://www.npmjs.com/package/@usedispatch/client).
 
 See our [litepaper](./litepaper.md) for more details on how the protocol works under the hood.
 
