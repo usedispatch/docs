@@ -23,10 +23,8 @@ jobs:
           path: ./dispatch-docs
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
-          cache: yarn
           path: ./dispatch-docs
-
+          node-version: 18          
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
