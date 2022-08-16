@@ -23,12 +23,17 @@ jobs:
           path: ./dispatch-docs
       - uses: actions/setup-node@v3
         with:
-          path: ./dispatch-docs
-          node-version: 18          
+          node-version: 18
+          cache: yarn
+          cache-dependency-path: dispatch-docs/yarn.lock
+          
+
 
       - name: Install dependencies
+        path: ./dispatch-docs
         run: yarn install --frozen-lockfile
       - name: Build website
+        path: ./dispatch-docs
         run: yarn build
 
       # Popular action to deploy to GitHub Pages:
