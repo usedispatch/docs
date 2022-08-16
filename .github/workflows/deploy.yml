@@ -30,11 +30,11 @@ jobs:
 
 
       - name: Install dependencies
-        path: ./dispatch-docs
         run: yarn install --frozen-lockfile
+        working-directory: ./dispatch-docs
       - name: Build website
-        path: ./dispatch-docs
         run: yarn build
+        working-directory: ./dispatch-docs
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
