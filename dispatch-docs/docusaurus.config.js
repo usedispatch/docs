@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Dispatch Developer Documentation',
   tagline: 'The Dispatch Protocol on Solana helps dapps communicate with their users in a fast, reliable and secure manner.',
-  url: 'https://docs.usedispatch.net',
+  url: 'https://docs.dispatch.forum',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
