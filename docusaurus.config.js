@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Dispatch Developer Documentation',
+  title: 'Dispatch Documentation',
   tagline: 'Dispatch is a conversational protocol for Solana.',
   url: 'https://docs.dispatch.forum',
   baseUrl: '/',
@@ -59,7 +59,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'Documentation',
+            docId: 'Developer/developer',
             position: 'left',
             label: 'Docs',
           },

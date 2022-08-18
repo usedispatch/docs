@@ -1,4 +1,4 @@
-# Developer Docs
+# Developer
 
 The main objects in Dispatch Protocol SDK are as follows.
 <!-- - [Wallets](./docs/wallets)
