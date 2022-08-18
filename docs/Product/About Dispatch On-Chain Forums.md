@@ -40,4 +40,4 @@ We wanted Dispatch to bring to life some of the more imaginative web3 uses cases
 
 </aside>
 
-<!-- Next, [Getting Started with Dispatch](Getting%20Started%20with%20Dispatch%20Forums%2042c1f18029e042fdbdebd7af669e327a.md) > -->
+Next, [Getting Started with Dispatch](Getting%20Started%20with%20Dispatch%20Forums.md) >

@@ -4,15 +4,11 @@ Go to Solana Beach or a mountain top in the Metaverse. Next, meditate on what yo
 
 ## Launch your Dispatch Forum
 
-<aside>
 📌 Have ready the name and short description of your community, your moderators’ wallet addresses, and Collection ID (if you are token gating by NFT collection).
 
-</aside>
 
-<aside>
-📌 Your Collection ID, also referred to as Collection Mint ID, is the mint ID of the collection NFT. To learn more about Collection IDs, see Metaplex’s [documentation](https://docs.metaplex.com/programs/token-metadata/certified-collections).
+📌 Your Collection ID, also referred to as Collection Mint ID, is the mint ID of the collection NFT. To learn more about Collection IDs, see Metaplex’s [docs](https://docs.metaplex.com/programs/token-metadata/certified-collections/).
 
-</aside>
 
 1. Like any Solana app, connect your wallet by clicking the connect button in the upper right. 
 2. Go to the Dispatch forum [app](https://app.dispatch.forum/) and click “Create Forum”.
@@ -38,4 +34,4 @@ If you are currently token gating, only wallets holding your token can make post
 
 </aside>
 
-Next, [Create Engagement with Dispatch](Create%20Engagement%20with%20Dispatch%20b3055cb036a441c280987846e3d2dc97.md) >
+Next, [Create Engagement with Dispatch](Create%20Engagement%20with%20Dispatch.md) >
