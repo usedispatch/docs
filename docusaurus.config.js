@@ -59,9 +59,9 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'developer',
+            docId: 'Documentation',
             position: 'left',
-            label: 'Developer',
+            label: 'Docs',
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {to:'/litepaper', label: 'Litepaper', position:'left'},
