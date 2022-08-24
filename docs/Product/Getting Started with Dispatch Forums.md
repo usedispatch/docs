@@ -34,4 +34,4 @@ If you are currently token gating, only wallets holding your token can make post
 
 </aside>
 
-Next, [Create Engagement with Dispatch](Create%20Engagement%20with%20Dispatch.md) >
+Next, [Create Engagement with Dispatch](Create%20Engagement%20with%20Dispatch) >

@@ -59,7 +59,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'Developer/developer',
+            docId: 'product/About Dispatch On-Chain Forums',
             position: 'left',
             label: 'Docs',
           },

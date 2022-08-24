@@ -10,4 +10,4 @@ For sellers, they could reject an offer but not communicate why the offer was NG
 
 Enter Dispatch Messaging. Using Dispatch’s SDK, Solanart was able to set up private 1:1 messaging between buyers and sellers. See [demo video](https://twitter.com/i/status/1512595540017659905).
 
-Dispatch messaging also supports 1:many messaging. To get started, grab your developer and checkout the [Dispatch Protocol SDK](https://docs.dispatch.forum/docs/developer).
+Dispatch messaging also supports 1:many messaging. To get started, grab your developer and checkout the [Dispatch Protocol SDK](/docs/developer).

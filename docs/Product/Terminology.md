@@ -17,4 +17,4 @@ Owners manage Moderators through moderator tokens, which can be revoked. |
 | Replies | Users can post replies to Topics.  |
 | Threaded Replies | The correspondence of multiple replies. |
 
-Next, [Solanart uses Dispatch](Solanart%20Uses%20Dispatch.md)
+Next, [Solanart uses Dispatch](Solanart%20Uses%20Dispatch)

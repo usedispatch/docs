@@ -45,4 +45,4 @@ Like announcements, some of our launch partners also create forum topics for oth
 
  
 
-Next, [Terminology](Terminology.md)
+Next, [Terminology](Terminology)

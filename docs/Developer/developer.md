@@ -1,5 +1,8 @@
 # Developer
 
+Mainnet Program ID for Messaging: `BHJ4tRcogS88tUhYotPfYWDjR4q7MGdizdiguY3N54rb`
+Mainnet Program ID for Postbox (Forums):  `DHepkufWDLJ9DCD37nbEDbPSFKjGiziQ6Lbgo1zgGX7S`a
+
 The main objects in Dispatch Protocol SDK are as follows.
 <!-- - [Wallets](./docs/wallets)
 - [Mailbox](./docs/mailbox) -->

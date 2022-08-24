@@ -69,7 +69,6 @@ export default function HomepageFeatures(): JSX.Element {
             Launching a Dispatch forum takes just a few clicks and no code is
             needed. The experience was designed for creators. To see example
             communities or launch your own forum, check out{" "}
-            <a href="https://forums.usedispatch.net/"></a>
             <a href="https://www.dispatch.forum/">
               https://www.dispatch.forum/
             </a>

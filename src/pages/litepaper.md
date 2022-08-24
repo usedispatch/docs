@@ -41,4 +41,4 @@ Moderators are maintained for each postbox by a token minted to each moderator, 
 
 Dispatch Protocol charges a fee for each message and post that is sent. This is currently 50,000 lamports per message. Creating a postbox has a fee as well, a personal postbox (postbox public key and creator are the same) is 50,000 lamports, creating a postbox for any other public key is 1 SOL. 
 
-There is also a full-featured client library and a minimalistic command line tool to aid in the use of the protocol. Please see https://docs.usedispatch.net/ for more details.
+There is also a full-featured client library and a minimalistic command line tool to aid in the use of the protocol. Please see https://docs.dispatch.forum/Developer/cli for more details.
