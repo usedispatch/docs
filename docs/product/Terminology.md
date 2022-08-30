@@ -4,9 +4,7 @@
 
 | User Types | Description |
 | --- | --- |
-| Owner | The public key (pubkey) authority of the Dispatch Forum. Owners set up the forum, make the forum gated or not, and assign moderators. For example, the NFT collection owner can set up a forum for their NFT community. 
-
-Owners manage Moderators through moderator tokens, which can be revoked. |
+| Owner | The public key (pubkey) authority of the Dispatch Forum. Owners set up the forum, make the forum gated or not, and assign moderators. For example, the NFT collection owner can set up a forum for their NFT community. Owners manage Moderators through moderator tokens, which can be revoked. |
 | Moderator | Moderators are managed through revocable tokens. Their responsibilities include setting up forum topics, removing distasteful content, removing users, pinning posts, and more. |
 | User | Users are managed through their NFT’s mint address. As long as their NFT is part of the NFT collection, they can do things like make posts and comments to the forum. |
 
